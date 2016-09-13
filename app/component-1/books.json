@@ -34,9 +34,49 @@
     {
         "id": 5,
         "version": 0,
-        "genre": "it",
+        "genre": "comedy",
         "year": 2001,
-        "title": "Wzorce projektowe",
-        "author": "Erich Gamma, Ralph Johnson, Richard Helm, John Vlissides"
+        "title": "The Diary of a Nobody",
+        "author": "George Grossmith, Weeden Grossmith"
+    },
+    {
+        "id": 6,
+        "version": 0,
+        "genre": "horror",
+        "year": 1980,
+        "title": "The Shining",
+        "author": "Stephen King"
+    },
+    {
+        "id": 7,
+        "version": 0,
+        "genre": "satire",
+        "year": 2003,
+        "title": "Animal Farm",
+        "author": "George Orwell"
+    },
+    {
+        "id": 8,
+        "version": 0,
+        "genre": "tragedy",
+        "year": 1602,
+        "title": "Hamlet",
+        "author": "William Shakespeare"
+    },
+    {
+        "id": 9,
+        "version": 0,
+        "genre": "comedy",
+        "year": 1998,
+        "title": "Naked",
+        "author": "David Sedaris"
+    },
+    {
+        "id": 10,
+        "version": 0,
+        "genre": "comedy",
+        "year": 2011,
+        "title": "Seriously... I'm Kidding",
+        "author": "Ellen DeGeneres"
     }
 ]

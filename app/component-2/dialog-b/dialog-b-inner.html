@@ -1,1 +1,145 @@
 <h2>Hello from Dialog B!</h2>
+<div class="alert alert-info">
+    <p>Sort Type: {{ data.sortType }}</p>
+    <p>Sort Reverse: {{ data.sortReverse }}</p>
+</div>
+
+<div class="dropdown">
+  <label>Filter by genre: </label>
+    <button class="btn btn-primary btn-large dropdown-toggle genre-button"
+        type="button"
+        data-toggle="dropdown">{{data.dropdownButton}}
+            <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li>
+        <a data-ng-click="filter('', 'all')">all</a>
+      </li>
+      <li class="divider"></li>
+        <li data-ng-repeat="bookGenre in data.genres">
+            <a data-ng-bind="bookGenre.genre" id="genreId_{{bookGenre.id}}"
+                data-ng-click="filter(bookGenre.genre, bookGenre.genre)"></a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a data-ng-click="filter('', 'none')">none</a>
+        </li>
+    </ul>
+</div>
+<br>
+
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text"
+                class="form-control"
+                placeholder="Search by all fields"
+                data-ng-model="search.$">
+        </div>
+    </div>
+</form>
+
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text"
+                class="form-control"
+                placeholder="Search by year"
+                data-ng-model="search.year">
+        </div>
+    </div>
+</form>
+
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text"
+                class="form-control"
+                placeholder="Search by genre"
+                data-ng-model="search.genre">
+        </div>
+    </div>
+</form>
+
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text"
+                class="form-control"
+                placeholder="Search by title"
+                data-ng-model="search.title">
+        </div>
+    </div>
+</form>
+
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text"
+                class="form-control"
+                placeholder="Search by author"
+                data-ng-model="search.author">
+        </div>
+    </div>
+</form>
+
+<table id="booksTable"
+    class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>
+                <a data-ng-href="{{data.currentUrl}}"
+                    data-ng-click="data.sortType='id'; data.sortReverse = !data.sortReverse">
+                    Id
+                    <span ng-show="data.sortType == 'id' && !data.sortReverse" class="fa fa-caret-down" ></span>
+                    <span ng-show="data.sortType == 'id' && data.sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+            </td>
+            <td>
+                <a href="{{data.currentUrl}}"
+                    data-ng-click="data.sortType='title'; data.sortReverse = !data.sortReverse">
+                    Title
+                    <span ng-show="data.sortType == 'title' && !data.sortReverse" class="fa fa-caret-down" ></span>
+                    <span ng-show="data.sortType == 'title' && data.sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+            <td>
+                <a href="{{data.currentUrl}}"
+                    data-ng-click="data.sortType='author'; data.sortReverse = !data.sortReverse">
+                    Author
+                    <span ng-show="data.sortType == 'author' && !data.sortReverse" class="fa fa-caret-down" ></span>
+                    <span ng-show="data.sortType == 'author' && data.sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+            <td>
+                <a href="{{data.currentUrl}}"
+                    data-ng-click="data.sortType='year'; data.sortReverse = !data.sortReverse">
+                    Year
+                    <span ng-show="data.sortType == 'year' && !data.sortReverse" class="fa fa-caret-down" ></span>
+                    <span ng-show="data.sortType == 'year' && data.sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+            <td>
+                <a href="{{data.currentUrl}}"
+                    data-ng-click="data.sortType='genre'; data.sortReverse = !data.sortReverse">
+                    Genre
+                    <span ng-show="data.sortType == 'genre' && !data.sortReverse" class="fa fa-caret-down" ></span>
+                    <span ng-show="data.sortType == 'genre' && data.sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="bookId_{{book.id}}" data-ng-repeat="book in data.books | orderBy:data.sortType:data.sortReverse | filter:search:strict" data-ng-show="data.dropdownButton != 'none'">
+            <td data-ng-bind="book.id"></td>
+            <td data-ng-bind="book.title"></td>
+            <td data-ng-bind="book.author"></td>
+            <td data-ng-bind="book.year"></td>
+            <td data-ng-bind="book.genre"></td>
+        </tr>
+    </tbody>
+</table>

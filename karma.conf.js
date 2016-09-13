@@ -42,7 +42,7 @@ module.exports = function (config) {
         files: _.flatten([libs, pathsConf.scripts.src(), pathsConf.scripts.testSrc()]),
 
         // list of files / patterns to exclude
-        exclude: [],
+        exclude: ['app/spec/e2e/**.js'],
 
         // web server port
         port: 7777,

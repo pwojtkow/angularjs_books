@@ -1,20 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
-<div class="modal-content">
-    <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+
+<body ng-model="app">
+    <div class="modal-content"
+        id="editBookModal">
+        <div class="modal-header">
+            <h3 class="modal-title"
+                data-ng-bind="data.header"></h3>
+        </div>
+
+        <div class="modal-body">
+            <form name="data.fields">
+                <div class="form-group row">
+
+                    <div class="form-group"
+                        data-ng-class="{'form-group has-error' : data.fields.title.$invalid}">
+                        <label class="col-form-label"
+                            for="title-label">Title</label>
+                        <input type="text"
+                            class="form-control title-field"
+                            name=title
+                            data-ng-model="data.selectedBook.title"
+                            data-ng-required="true">
+                    </div>
+
+                    <div class="form-group"
+                        data-ng-class="{'form-group has-error' : data.fields.author.$invalid}">
+                        <label class="col-form-label"
+                            for="author-label">Author</label>
+                        <input type="text"
+                            class="form-control author-field"
+                            name=author
+                            data-ng-model="data.selectedBook.author"
+                            data-ng-required="true">
+                    </div>
+
+                    <div class="form-group"
+                        data-ng-class="{'form-group has-error' : data.fields.genre.$invalid}">
+                        <label class="col-form-label"
+                            for="title-label">Genre</label>
+                        <input type="text"
+                            class="form-control genre-field"
+                            name=genre
+                            data-ng-model="data.selectedBook.genre"
+                            data-ng-required="true">
+                    </div>
+
+                </div>
+                <div class="form-group"
+                    ng-class="{'form-group has-error' : data.fields.year.$invalid}"
+                    ng-controller="DatepickerCtrl">
+                    <label for="year-input"
+                        class="col-form-label">Year</label>
+                    <p class="input-group">
+                        <input type="text"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                            name="year"
+                            class="form-control year-field"
+                            ng-model="dt"
+                            uib-datepicker-popup="{{format}}"
+                            is-open="status.opened"
+                            datepicker-options="dateOptions"
+                            date-disabled="disabled(date, mode)"
+                            ng-required="true"
+                            close-text="Close" />
+                        <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                  </span>
+                    </p>
+                </div>
+
+
+            </form>
+        </div>
+        <div>
+            <h4>
+            <span class="label label-danger warning-empty"
+                data-ng-bind="data.alertMessage"
+                data-ng-show="data.fields.title.$invalid || data.fields.author.$invalid || data.fields.year.$invalid || data.fields.genre.$invalid"></span>
+              </h4>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-block"
+                data-ng-click="change()"
+                data-ng-bind="data.buttonName"
+                data-ng-disabled="data.fields.title.$invalid || data.fields.author.$invalid || data.fields.year.$invalid || data.fields.genre.$invalid"></button>
+            <button class="btn btn-primary btn-block"
+                data-ng-click="cancel()">Cancel</button>
+        </div>
     </div>
-    <div class="modal-body">
-            <p>Title: {{data.selectedBook.title}}</p>
-    </div>
-    <div class="modal-footer ">
-        <button class="btn btn-primary" data-ng-click="ok()">OK</button>
-    </div>
-</div>
 </body>
+
 </html>

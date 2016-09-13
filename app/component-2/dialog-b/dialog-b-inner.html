@@ -5,23 +5,24 @@
 </div>
 
 <div class="dropdown">
-  <label>Filter by genre: </label>
+    <label>Filter by genre: </label>
     <button class="btn btn-primary btn-large dropdown-toggle genre-button"
         type="button"
         data-toggle="dropdown">{{data.dropdownButton}}
             <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li>
-        <a data-ng-click="filter('', 'all')">all</a>
-      </li>
-      <li class="divider"></li>
+        <li>
+            <a data-ng-click="filter('', 'all')">all</a>
+        </li>
+        <li class="divider"></li>
         <li data-ng-repeat="bookGenre in data.genres">
-            <a data-ng-bind="bookGenre.genre" id="genreId_{{bookGenre.id}}"
+            <a data-ng-bind="bookGenre.genre"
+                id="genreId_{{bookGenre.id}}"
                 data-ng-click="filter(bookGenre.genre, bookGenre.genre)"></a>
         </li>
         <li class="divider"></li>
         <li>
-          <a data-ng-click="filter('', 'none')">none</a>
+            <a data-ng-click="filter('', 'none')">none</a>
         </li>
     </ul>
 </div>
@@ -134,7 +135,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr id="bookId_{{book.id}}" data-ng-repeat="book in data.books | orderBy:data.sortType:data.sortReverse | filter:search:strict" data-ng-show="data.dropdownButton != 'none'">
+        <tr id="bookId_{{book.id}}"
+            data-ng-repeat="book in data.books | orderBy:data.sortType:data.sortReverse | filter:search:strict"
+            data-ng-show="data.dropdownButton != 'none'">
             <td data-ng-bind="book.id"></td>
             <td data-ng-bind="book.title"></td>
             <td data-ng-bind="book.author"></td>

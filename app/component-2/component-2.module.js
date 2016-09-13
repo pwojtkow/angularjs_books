@@ -9,7 +9,7 @@ angular.module('app.component2', ['ngRoute', 'app.component2.templates'])
                     return $http.get('/component-2/bookGenres.json');
                 },
                 books: function(bookDataFactory) {
-                  bookDataFactory.getBooks();
+                    bookDataFactory.getBooks();
                 }
             }
         });

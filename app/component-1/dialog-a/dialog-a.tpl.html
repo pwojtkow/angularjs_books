@@ -4,7 +4,8 @@
 <body>
     <section>
         <h2>Hello from Dialog A!</h2>
-        <table id="booksTable" class="table table-hover">
+        <table id="booksTable"
+            class="table table-hover">
             <thead>
                 <th>Id</th>
                 <th>Title</th>
@@ -13,8 +14,11 @@
                 <th>Genre</th>
             </thead>
             <tbody>
-                <tr data-ng-repeat="book in data.books" data-ng-dblclick="edit()" id="row_{{book.id}}"
-                        data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}">
+                <tr data-ng-repeat="book in data.books"
+                    data-ng-dblclick="edit()"
+                    id="row_{{book.id}}"
+                    data-ng-click="selectRow($index)"
+                    data-ng-class="{'active': selectedRowIndex === $index}">
                     <td data-ng-bind="book.id"></td>
                     <td data-ng-bind="book.title"></td>
                     <td data-ng-bind="book.author"></td>
@@ -23,9 +27,13 @@
                 </tr>
             </tbody>
         </table>
-        <button type="addBookButton" class="btn btn-primary btn-block" data-ng-click="add()">Add new book</button>
-        <button data-ng-hide="selectedRowIndex === undefined" type="editBookButton"
-                  class="btn btn-primary btn-block" data-ng-click="edit()">Edit book</button>
+        <button type="addBookButton"
+            class="btn btn-primary btn-block"
+            data-ng-click="add()">Add new book</button>
+        <button data-ng-hide="selectedRowIndex === undefined"
+            type="editBookButton"
+            class="btn btn-primary btn-block"
+            data-ng-click="edit()">Edit book</button>
     </section>
 
 </body>
